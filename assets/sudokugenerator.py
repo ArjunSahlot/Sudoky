@@ -146,8 +146,3 @@ def best(set_of_puzzles):
 def display(puzzle):
     for row in puzzle:
         print(' '.join([str(n or '_') for n in row]))
-
-
-""" Controls starts here """
-results = run()       # find puzzles with as few givens as possible.
-puzzle  = best(results)  # use the best one of those puzzles.

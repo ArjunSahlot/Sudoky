@@ -48,14 +48,12 @@ def printBoard():
             cell[1] = True
         if picture != True:
             window.blit(picture, (cell[0][0] + 3.5, cell[0][1] + 3.5))
-            os.system("cls")
 
         window.blit(SOLVE_BUT, (850, 1000))
 
 
-def pointsConverter(points=[0, 0, 0,
-                            0]):  # converts a rect described top-left(x,y), bottom-right(x,y) into top-left(x,y), width, heigth
-    return (points[0], points[1], points[2] - points[0], points[3] - points[1])
+def pointsConverter(points=(0, 0, 0, 0)):  # converts a rect described top-left(x,y), bottom-right(x,y) into top-left(x,y), width, heigth
+    return points[0], points[1], points[2] - points[0], points[3] - points[1]
 
 
 def getNum(cellnum):  # gets the number input and saves it in the board
@@ -119,7 +117,6 @@ def init():
 
 
 init()
-fps = 50
 
 # contains positions of all the cells[topleftX,topleftY,bottomrightX,bottomrightY], if they have a number in them(
 # useful for highlighting), and the number it contains
@@ -212,10 +209,8 @@ for i in range(len(board)):
 
 '''Main Loop'''
 run = True
-solving = False
 while run:
     printBoard()
-    pygame.time.Clock().tick(fps)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
@@ -237,30 +232,6 @@ while run:
         solver.backtrack(unflatBoard)
         board = list(flatten(unflatBoard))
         solving = True
-
-    if solving:
-        for i in range(len(board)):
-            celldata[i + 1][2] = board[i]
-        solving = False
-
-    #     solving = True
-    # if solving:
-    #     print("solving")
-    #     find = solver.find_empty(unflatBoard)
-    #     if not find:
-    #         solving = False
-    #     else:
-    #         row, col = find
-
-    #     for i in range(1,10):
-    #         if solver.valid(unflatBoard, i, find):
-    #             unflatBoard[row][col] = i
-    #             break
-    #         else:
-    #             unflatBoard[row][col] = 0
-
-    #     board = list(flatten(unflatBoard))
-    #     time.sleep(0.5)
 
     pygame.display.update()
 
