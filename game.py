@@ -98,7 +98,7 @@ def init():
     HEIGHT = 1000 + BOTTOM_LEN
     pygame.init()
     window = pygame.display.set_mode((WIDTH, HEIGHT))
-    pygame.display.set_caption("Sudoku, By: Arjun Sahlot")
+    pygame.display.set_caption("Sudoku")
     pygame.display.set_icon(pygame.image.load(os.path.join("assets", "sudoku_icon.png")))
     ONE = pygame.image.load(os.path.join("assets", "1.png"))
     TWO = pygame.image.load(os.path.join("assets", "2.png"))
