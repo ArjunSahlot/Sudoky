@@ -250,7 +250,8 @@ while run:
     if 850 < mouseX < 986 and mouseY < 1047.5 and mouseY > 1002.5 and pygame.mouse.get_pressed()[0]:
         solver.backtrack(unflatBoard)
         board = list(flatten(unflatBoard))
-        solving = True
+        for i in range(1, 82):
+            celldata[i][2] = board[i-1]
 
     pygame.display.update()
 
